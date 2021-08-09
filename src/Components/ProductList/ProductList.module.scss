@@ -1,0 +1,10 @@
+.productlist{
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: center;
+    align-items: center;
+    .title{
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+}
