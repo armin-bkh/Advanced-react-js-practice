@@ -5,12 +5,12 @@ const ChildApp = () => {
     // const count = useContext(Context);
     // const setCount = useContext(ContextDispatcher);
     const count = useCount();
-    const { incrementOne, decrementOne, reset } = useCountAction();
+    const {increment, decrement , reset} = useCountAction();
     return ( 
         <div>
             <h2>{count}</h2>
-            <button onClick={incrementOne}>increment one</button>
-            <button onClick={decrementOne}>decrement one</button>
+            <button onClick={()=> increment(1)}>increment one</button>
+            <button onClick={()=> decrement(1)}>decrement one</button>
             <button onClick={reset}>reset</button>
         </div>
      );

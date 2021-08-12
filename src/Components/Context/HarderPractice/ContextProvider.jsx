@@ -31,15 +31,15 @@ export default ContextProvider;
 
 export const useCount = () => useContext(Context);
 export const useCountAction = () => {
-  const disPatch = useContext(ContextDispatcher);
-  const incrementOne = () => {
-    disPatch({type: 'increment', value: 1});
-  };
-  const decrementOne = () => {
-    disPatch({type: 'decrement', value: 1});
-  };
-  const reset = () => {
-    disPatch({type: 'reset'});
-  };
-  return { incrementOne, decrementOne, reset };
+  const dispatch = useContext(ContextDispatcher);
+  const increment = (value) =>{
+    dispatch({type: 'increment', value: value})
+  }
+  const decrement = (value) =>{
+    dispatch({type: 'decrement', value: value})
+  }
+  const reset = () =>{
+    dispatch({type: 'reset'})
+  }
+  return { increment, decrement, reset };
 };

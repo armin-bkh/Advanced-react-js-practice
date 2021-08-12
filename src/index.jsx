@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './Components/App/App';
+import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
-import App from './Components/Context/HarderPractice/App';
+// import App from './Components/Context/HarderPractice/App';
+// import CounterApp from './Components/Reducer/Counter';
 // import ClassComp from './Components/Context/ClassComp';
 // import IncrementClick from './Components/HOC/IncrementClick';
 // import IncrementHover from './Components/HOC/IncrementHover';
@@ -15,7 +16,7 @@ import App from './Components/Context/HarderPractice/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <Counter /> */}
     {/* <Timer /> */}
     {/* <IncrementClick title="Click me:" name="Armin"/>
@@ -24,7 +25,8 @@ ReactDOM.render(
     {/* <InpFocus /> */}
     {/* <FInpFocus /> */}
     {/* <ClassComp /> */}
-    <App />
+    {/* <App /> */}
+    {/* <CounterApp /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
