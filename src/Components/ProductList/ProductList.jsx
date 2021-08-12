@@ -8,7 +8,6 @@ const ProductList = () => {
   const {changeHanlder, deleteHandler, incrementHandler, decrementHandler} = useProductsActions();
   return (
     <ul className={styles.productlist}>
-      <h1 className={styles.title}>Shopping App</h1>
       {products.length ? (
         products.map((el) => (
           <Product
@@ -17,7 +16,7 @@ const ProductList = () => {
             onIncrement={() => incrementHandler(el.id)}
             onDecrement={() => decrementHandler(el.id)}
             onDelete={() => deleteHandler(el.id)}
-            onChange={(e) => changeHanlder(e, el.id)}
+            // onChange={(e) => changeHanlder(e, el.id)}
           />
         ))
       ) : (

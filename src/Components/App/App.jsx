@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductsProvider from "../Context/Providers/ProductsProvider";
+import Filter from "../Filter/Filter";
 import NavBar from "../Navbar/NavBar";
 import ProductList from "../ProductList/ProductList";
 import styles from "./App.module.scss";
@@ -9,6 +10,7 @@ const App = () => {
     <ProductsProvider>
       <div className={styles.AppContainer}>
         <NavBar />
+        <Filter />
         <ProductList />
       </div>
     </ProductsProvider>

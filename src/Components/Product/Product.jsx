@@ -11,15 +11,15 @@ const Product = ({
 }) => {
   return (
     <li className={styles.product}>
-      <p>product name: {properties.name}</p>
-      <p>product price: {properties.price}</p>
+      <p>product name: {properties.title}</p>
+      <p>product price: {properties.price} $</p>
       <span className={styles.badge}>{properties.quantity}</span>
-      <input
+      {/* <input
         className={styles.input}
         type="text"
-        value={properties.name}
+        value={properties.title}
         onChange={onChange}
-      />
+      /> */}
       <button
         className={`${styles.btn} ${properties.quantity === 1 && styles.warning}`}
         type="button"

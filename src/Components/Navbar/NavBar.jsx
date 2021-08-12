@@ -7,7 +7,7 @@ const NavBar = () => {
     const products = useProducts();
     return ( 
         <header className={styles.navBar}>
-            <h1>Armin Shopping</h1> 
+            <h1>Armin Shopping App</h1> 
             <span>{products.length}</span>
         </header>
      );
