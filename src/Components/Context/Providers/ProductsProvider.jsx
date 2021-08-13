@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState, useReducer } from "react";
 import { ProductsContext, ProductsDispatcherContext } from "../ProductsContext";
 import { productsData } from '../../../db/products';
+import _ from 'lodash';
 // const initialState = [
 //   { title: "React-js", price: "98 $", id: 1, quantity: 1 },
 //   { title: "Node-js", price: "88 $", id: 2, quantity: 2 },
@@ -50,6 +51,16 @@ const reducer = (state, action) => {
         return updatedProducts;
       } 
     }
+    case "sort": {
+      const value = action.event.value;
+      const products = [...state];
+      if( value === "") return products
+      if( value === "highest" ){
+        return _.orderBy(products, ["price"], ["desc"])
+      }else {
+        return _.orderBy(products, ["price"], ["asc"])
+      }
+    }
     default:
       return state;
   }
@@ -95,13 +106,17 @@ export const useProductsActions = () => {
     dispatch({type: 'decrement', id: id})
   };
 
-  const changeHanlder = (e, id) => {
-    dispatch({type: 'change', id: id, event: e})
-  };
+  // const changeHanlder = (e, id) => {
+  //   dispatch({type: 'change', id: id, event: e})
+  // };
 
-  const filterHandler = (e) =>{
-    dispatch({type: 'filter', event: e});
+  const filterHandler = (selectedOption) =>{
+    dispatch({type: 'filter', event: selectedOption});
   }
 
-  return { deleteHandler, incrementHandler, decrementHandler, changeHanlder, filterHandler };
+  const sortHandler = (selectedOption) =>{
+    dispatch({type: 'sort', event: selectedOption})
+  }
+
+  return { deleteHandler, incrementHandler, decrementHandler, filterHandler, sortHandler };
 };
