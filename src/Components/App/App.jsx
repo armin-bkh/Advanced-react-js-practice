@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SearchBar from "../../common/SeacrhBar/SearchBar";
 import ProductsProvider from "../Context/Providers/ProductsProvider";
 import Filter from "../Filter/Filter";
 import NavBar from "../Navbar/NavBar";
@@ -10,6 +11,7 @@ const App = () => {
     <ProductsProvider>
       <div className={styles.AppContainer}>
         <NavBar />
+        <SearchBar />
         <Filter />
         <ProductList />
       </div>

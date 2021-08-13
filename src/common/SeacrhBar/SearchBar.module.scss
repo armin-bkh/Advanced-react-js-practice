@@ -1,0 +1,27 @@
+.searchBarContainer {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .searchBarLbl {
+        margin-right: 15px;
+        font-weight: bold;
+    }
+
+    .searchBar {
+        width: 15rem;
+        color: #b666ca;
+        border: 1px #b666ca solid;
+        border-radius: 5px;
+        padding: 10px 15px;
+        background-color: #fff;
+        outline: none;
+
+        :focus {
+            border: 2px #b666ca solid;
+        }
+    }
+
+}

@@ -15,7 +15,7 @@ const Options = [
 
 const sortOptions = [
     {value: "highest", label: "highest"},
-    {value: "lowest", label: "lowest"}
+    {value: "lowest", label: "lowest"},
 ]
 
 const Filter = () => {

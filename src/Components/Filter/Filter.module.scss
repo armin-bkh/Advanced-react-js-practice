@@ -14,5 +14,9 @@
     .filterProduct{
         width: 15rem;
         display: inline-block;
+
+        &:not(:last-child){
+            margin-right: 15px;
+        }
     }
 }

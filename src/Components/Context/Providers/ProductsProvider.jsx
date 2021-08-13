@@ -61,6 +61,14 @@ const reducer = (state, action) => {
         return _.orderBy(products, ["price"], ["asc"])
       }
     }
+    case "search": {
+      const value = action.event.target.value;
+      if(value === "") return productsData;
+      const products = [...state];
+      // const updatedProducts = products.filter(el => el.title.indexOf(value) >= 0)
+      const updatedProducts = products.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
+      return updatedProducts;
+    }
     default:
       return state;
   }
@@ -118,5 +126,9 @@ export const useProductsActions = () => {
     dispatch({type: 'sort', event: selectedOption})
   }
 
-  return { deleteHandler, incrementHandler, decrementHandler, filterHandler, sortHandler };
+  const searchHandler = (e) =>{
+    dispatch({type: 'search', event: e})
+  }
+
+  return { deleteHandler, incrementHandler, decrementHandler, filterHandler, sortHandler, searchHandler };
 };
