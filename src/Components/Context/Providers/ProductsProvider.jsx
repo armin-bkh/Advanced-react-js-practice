@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useReducer } from "react";
 import { ProductsContext, ProductsDispatcherContext } from "../ProductsContext";
-import { productsData } from '../../../db/Products';
+import { productsData } from '../../../db/products';
 // const initialState = [
 //   { title: "React-js", price: "98 $", id: 1, quantity: 1 },
 //   { title: "Node-js", price: "88 $", id: 2, quantity: 2 },
@@ -41,6 +41,13 @@ const reducer = (state, action) => {
     case "delete": {
       const newList = state.filter((el) => el.id !== action.id);
       return newList;
+    }
+    case "filter": {
+      if(action.event.target.value === "") return productsData
+      else {
+        const updatedProducts = productsData.filter(el => el.availableSizes.indexOf(action.event.target.value) >= 0)
+        return updatedProducts;
+      } 
     }
     default:
       return state;
@@ -91,5 +98,9 @@ export const useProductsActions = () => {
     dispatch({type: 'change', id: id, event: e})
   };
 
-  return { deleteHandler, incrementHandler, decrementHandler, changeHanlder };
+  const filterHandler = (e) =>{
+    dispatch({type: 'filter', event: e});
+  }
+
+  return { deleteHandler, incrementHandler, decrementHandler, changeHanlder, filterHandler };
 };
