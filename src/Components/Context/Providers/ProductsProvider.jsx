@@ -43,9 +43,10 @@ const reducer = (state, action) => {
       return newList;
     }
     case "filter": {
-      if(action.event.target.value === "") return productsData
+      const value = action.event.value;
+      if(value === "") return productsData
       else {
-        const updatedProducts = productsData.filter(el => el.availableSizes.indexOf(action.event.target.value) >= 0)
+        const updatedProducts = productsData.filter(el => el.availableSizes.indexOf(value) >= 0)
         return updatedProducts;
       } 
     }
