@@ -64,9 +64,9 @@ const reducer = (state, action) => {
     case "search": {
       const value = action.event.target.value;
       if(value === "") return productsData;
-      const products = [...state];
+      const productList = [...productsData];
       // const updatedProducts = products.filter(el => el.title.indexOf(value) >= 0)
-      const updatedProducts = products.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
+      const updatedProducts = productList.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
       return updatedProducts;
     }
     default:

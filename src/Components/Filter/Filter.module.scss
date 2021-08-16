@@ -5,18 +5,7 @@
     margin: 20px 0;
     width: 100%;
 
-    .filterLbl{
-        font-weight: bold;
-        font-size: 1rem;
-        margin-right: 15px;
-    }
-    
-    .filterProduct{
-        width: 15rem;
-        display: inline-block;
-
-        &:not(:last-child){
-            margin-right: 15px;
-        }
+    .filters{
+        display: flex;
     }
 }

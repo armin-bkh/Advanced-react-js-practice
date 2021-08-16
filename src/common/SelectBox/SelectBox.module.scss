@@ -1,0 +1,20 @@
+.SelectBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .selectLbl {
+        font-weight: bold;
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+
+    .selectProduct {
+        width: 15rem;
+        display: inline-block;
+    }
+    
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
+}
