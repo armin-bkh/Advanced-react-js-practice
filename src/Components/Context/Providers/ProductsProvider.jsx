@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { ProductsContext, ProductsDispatcherContext } from "../ProductsContext";
 import { productsData } from '../../../db/products';
 import _ from 'lodash';
@@ -63,8 +63,8 @@ const reducer = (state, action) => {
     }
     case "search": {
       const value = action.event.target.value;
-      if(value === "") return productsData;
-      const productList = [...productsData];
+      if(value === "") return state;
+      const productList = [...state];
       // const updatedProducts = products.filter(el => el.title.indexOf(value) >= 0)
       const updatedProducts = productList.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
       return updatedProducts;

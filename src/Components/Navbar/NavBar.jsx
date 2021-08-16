@@ -1,6 +1,4 @@
-import { Component } from 'react';
 import { useProducts } from '../Context/Providers/ProductsProvider';
-import Product from '../Product/Product';
 import styles from './NavBar.module.scss';
 
 const NavBar = () => {

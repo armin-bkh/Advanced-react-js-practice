@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useProductsActions } from '../../Components/Context/Providers/ProductsProvider';
 import styles from './SearchBar.module.scss'; 
-const SearchBar = () => {
+const SearchBar = ({filterState, sortState}) => {
     const [value, setValue] = useState("");
-    const { searchHandler } = useProductsActions();
+    const { sortHandler ,filterHandler, searchHandler } = useProductsActions();
     const changeHandler = (e) =>{
-        setValue(e.target.value)
+        setValue(e.target.value);
+        filterHandler(filterState);
+        sortHandler(sortState);
         searchHandler(e);
     }   
     return ( 

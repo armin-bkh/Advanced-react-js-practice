@@ -1,11 +1,10 @@
-import React, { Component, useState } from "react";
 import { useProducts, useProductsActions } from "../Context/Providers/ProductsProvider";
 import Product from "../Product/Product";
 import styles from "./ProductList.module.scss";
 
 const ProductList = () => {
   const products = useProducts();
-  const {changeHanlder, deleteHandler, incrementHandler, decrementHandler} = useProductsActions();
+  const { deleteHandler, incrementHandler, decrementHandler} = useProductsActions();
   return (
     <ul className={styles.productlist}>
       {products.length ? (

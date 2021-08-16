@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Select from "react-select";
+import SearchBar from "../../common/SeacrhBar/SearchBar";
 import SelectBox from "../../common/SelectBox/SelectBox";
 import { useProductsActions } from "../Context/Providers/ProductsProvider";
 import styles from "./Filter.module.scss";
 
-const Options = [
+const filterOptions = [
   { value: "", label: "ALL" },
   { value: "S", label: "S" },
   { value: "XS", label: "XS" },
@@ -20,12 +20,12 @@ const sortOptions = [
 ];
 
 const Filter = () => {
-  const [value, setValue] = useState("");
+  const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
   const { filterHandler, sortHandler } = useProductsActions();
 
   const changeFilterHandler = (selectedOption) => {
-    setValue(selectedOption);
+    setFilter(selectedOption);
     filterHandler(selectedOption);
     sortHandler(sort);
   };
@@ -36,10 +36,12 @@ const Filter = () => {
   };
 
   return (
-    <div className={styles.filterContainer}>
-      <h1>Sopping App</h1>
-      <div className={styles.filters}>
-        {/* <select className={styles.filterProduct} id="filterProduct" value={value} onChange={changeHandler}>
+    <>
+      <SearchBar filterState={filter} sortState={sort} />
+      <div className={styles.filterContainer}>
+        <h1>Sopping App</h1>
+        <div className={styles.filters}>
+          {/* <select className={styles.filterProduct} id="filterProduct" value={value} onChange={changeHandler}>
             <option value="">All</option>
             <option value="XS">XS</option>
             <option value="S">S</option>
@@ -48,7 +50,7 @@ const Filter = () => {
             <option value="XL">XL</option>
             <option value="XXL">XXL</option>
         </select> */}
-        {/* <label className={styles.filterLbl} htmlFor="filterProduct">
+          {/* <label className={styles.filterLbl} htmlFor="filterProduct">
           Order By
         </label>
         <Select
@@ -58,15 +60,15 @@ const Filter = () => {
           onChange={changeFilterHandler}
           options={Options}
         /> */}
-        <SelectBox
-          title="Order By"
-          htmlFor="filterProduct"
-          id="filterProduct"
-          value={value}
-          onChange={changeFilterHandler}
-          options={Options}
-        />
-        {/*<label className={styles.filterLbl} htmlFor="sortProduct">
+          <SelectBox
+            title="Order By"
+            htmlFor="filterProduct"
+            id="filterProduct"
+            value={filter}
+            onChange={changeFilterHandler}
+            options={filterOptions}
+          />
+          {/*<label className={styles.filterLbl} htmlFor="sortProduct">
           sort By
         </label>
          <Select
@@ -76,16 +78,17 @@ const Filter = () => {
           onChange={changeSortHandler}
           options={sortOptions}
         /> */}
-        <SelectBox
-          title="Sort By"
-          htmlFor="sortProduct"
-          id="sortProduct"
-          value={sort}
-          onChange={changeSortHandler}
-          options={sortOptions}
-        />
+          <SelectBox
+            title="Sort By"
+            htmlFor="sortProduct"
+            id="sortProduct"
+            value={sort}
+            onChange={changeSortHandler}
+            options={sortOptions}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

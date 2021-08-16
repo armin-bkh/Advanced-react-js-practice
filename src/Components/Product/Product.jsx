@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import styles from "./Product.module.scss";
 import {BiTrash} from 'react-icons/bi';
 
