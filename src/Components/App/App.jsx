@@ -7,14 +7,14 @@ import styles from "./App.module.scss";
 
 const App = () => {
   return (
-    // <ProductsProvider>
-    //   <div className={styles.AppContainer}>
-    //     <NavBar />
-    //     <Filter />
-    //     <ProductList />
-    //   </div>
-    // </ProductsProvider>
-    <Users />
+    <ProductsProvider>
+      <div className={styles.AppContainer}>
+        <NavBar />
+        <Filter />
+        <ProductList />
+      </div>
+    </ProductsProvider>
+    // <Users />
   );
 };
 
