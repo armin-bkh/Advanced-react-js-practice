@@ -1,7 +1,7 @@
 import { useContext, useEffect, useReducer } from "react";
 import { ProductsContext, ProductsDispatcherContext } from "../ProductsContext";
-import { productsData } from '../../../db/products';
-import _ from 'lodash';
+import { productsData } from "../../../db/Products";
+import _ from "lodash";
 // const initialState = [
 //   { title: "React-js", price: "98 $", id: 1, quantity: 1 },
 //   { title: "Node-js", price: "88 $", id: 2, quantity: 2 },
@@ -45,34 +45,39 @@ const reducer = (state, action) => {
     }
     case "filter": {
       const value = action.event.value;
-      if(value === "") return productsData
+      if (value === "") return productsData;
       else {
-        const updatedProducts = productsData.filter(el => el.availableSizes.indexOf(value) >= 0)
+        const updatedProducts = productsData.filter(
+          (el) => el.availableSizes.indexOf(value) >= 0
+        );
         return updatedProducts;
-      } 
+      }
     }
     case "sort": {
       const value = action.event.value;
       const products = [...state];
-      if( value === "") return products
-      if( value === "highest" ){
-        return _.orderBy(products, ["price"], ["desc"])
-      }else {
-        return _.orderBy(products, ["price"], ["asc"])
+      if (value === "") return products;
+      if (value === "highest") {
+        return _.orderBy(products, ["price"], ["desc"]);
+      } else {
+        return _.orderBy(products, ["price"], ["asc"]);
       }
     }
     case "search": {
       const value = action.event.target.value;
-      if(value === "") return state;
+      if (value === "") return state;
       const productList = [...state];
       // const updatedProducts = products.filter(el => el.title.indexOf(value) >= 0)
-      const updatedProducts = productList.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
+      const updatedProducts = productList.filter((el) =>
+        el.title.toLowerCase().includes(value.toLowerCase())
+      );
       return updatedProducts;
     }
     default:
       return state;
   }
 };
+
 const ProductsProvider = ({ children }) => {
   // const [products, setProducts] = useState([
   //   { name: "React-js", price: "98 $", id: 1, quantity: 1 },
@@ -103,32 +108,39 @@ export const useProductsActions = () => {
   const dispatch = useContext(ProductsDispatcherContext);
 
   const deleteHandler = (id) => {
-    dispatch({type: 'delete', id: id})
+    dispatch({ type: "delete", id: id });
   };
 
   const incrementHandler = (id) => {
-    dispatch({type: 'increment', id: id})
+    dispatch({ type: "increment", id: id });
   };
 
   const decrementHandler = (id) => {
-    dispatch({type: 'decrement', id: id})
+    dispatch({ type: "decrement", id: id });
   };
 
   // const changeHanlder = (e, id) => {
   //   dispatch({type: 'change', id: id, event: e})
   // };
 
-  const filterHandler = (selectedOption) =>{
-    dispatch({type: 'filter', event: selectedOption});
-  }
+  const filterHandler = (selectedOption) => {
+    dispatch({ type: "filter", event: selectedOption });
+  };
 
-  const sortHandler = (selectedOption) =>{
-    dispatch({type: 'sort', event: selectedOption})
-  }
+  const sortHandler = (selectedOption) => {
+    dispatch({ type: "sort", event: selectedOption });
+  };
 
-  const searchHandler = (e) =>{
-    dispatch({type: 'search', event: e})
-  }
+  const searchHandler = (e) => {
+    dispatch({ type: "search", event: e });
+  };
 
-  return { deleteHandler, incrementHandler, decrementHandler, filterHandler, sortHandler, searchHandler };
+  return {
+    deleteHandler,
+    incrementHandler,
+    decrementHandler,
+    filterHandler,
+    sortHandler,
+    searchHandler,
+  };
 };
